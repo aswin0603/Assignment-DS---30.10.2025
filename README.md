@@ -59,4 +59,69 @@ public class PalindromeChecker {
     }
 }
 ```
-<img width="690" height="124" alt="image" src="https://github.com/user-attachments/assets/186c7fab-8da7-4d2f-a5ef-90e0d8d3a826" />
+<img width="682" height="144" alt="image" src="https://github.com/user-attachments/assets/299e183c-1b46-4d34-8f98-e764e886ca2f" />
+
+### 3. In a smart home, each appliance sends power consumption readings to the central controller every minute. The system must detect power surges — defined as a time window of 5 minutes (i.e., 5 readings) where all readings are above a threshold value (say 1000W). If such a surge is detected, an alert must be triggered. Your task is to implement a monitoring system using a deque that: Continuously stores the last 5 readings. Checks after each new reading if all 5 readings in the deque are > threshold.  If so, prints "⚠️ Power Surge Detected". Otherwise, prints "✅ Normal".
+### Code:
+```java
+import java.util.*;
+
+public class PowerMonitor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Deque<Integer> readings = new LinkedList<>();
+        final int THRESHOLD = 1000;
+        final int WINDOW_SIZE = 5;
+
+        while (true) {
+            System.out.print("Enter power reading (W): ");
+            int reading = sc.nextInt();
+
+            readings.addLast(reading);
+            if (readings.size() > WINDOW_SIZE) readings.removeFirst();
+
+            if (readings.size() == WINDOW_SIZE && readings.stream().allMatch(r -> r > THRESHOLD))
+                System.out.println("Power Surge Detected");
+            else
+                System.out.println("Normal");
+        }
+    }
+}
+```
+<img width="678" height="604" alt="image" src="https://github.com/user-attachments/assets/c4d462a0-027e-487e-b806-2a7304a1ecf1" />
+
+### 4. You are given a Java program that defines a queue data structure using a singly linked list. The implementation involves two classes:
+#### Node class: Represents a single element in the queue with two fields:
+#### data: stores the integer value
+#### next: points to the next node
+#### Queue class: Provides methods to perform the following operations:
+#### enqueue(int new_data): To perform insertion of a new element at the rear of the queue.
+#### dequeue(): To perform deletion of the front element from the queue.
+#### isEmpty(): To check if the queue is empty.
+#### printQueue(): To display the current elements of the queue after every enqueue or dequeue operation.
+### Code:
+```java
+import java.util.*;
+
+public class PowerMonitor {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Deque<Integer> readings = new LinkedList<>();
+        final int THRESHOLD = 1000;
+        final int WINDOW_SIZE = 5;
+
+        while (true) {
+            System.out.print("Enter power reading (W): ");
+            int reading = sc.nextInt();
+
+            readings.addLast(reading);
+            if (readings.size() > WINDOW_SIZE) readings.removeFirst();
+
+            if (readings.size() == WINDOW_SIZE && readings.stream().allMatch(r -> r > THRESHOLD))
+                System.out.println("Power Surge Detected");
+            else
+                System.out.println("Normal");
+        }
+    }
+}
+```
